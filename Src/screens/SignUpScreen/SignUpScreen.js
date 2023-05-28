@@ -3,9 +3,13 @@ import React, { useState }  from 'react'
 import Logo from '../../../assets/images/BMW.png'
 import CustomInput from '../../components/CustiomInput/CustomInput'
 import CustomButton from '../../components/CustomButton/CustomButton'
+import { useNavigation } from '@react-navigation/native'
 
 const SignUpScreen = () => {
-  const onSignUpPressed=()=>{console.warn('Sign Up Pressed')};
+  const navigation= useNavigation();
+  const onSignUpPressed=()=>{
+    console.warn('Sign Up Pressed')
+    navigation.navigate('ConfirmationEmail')};
   const onForgotPasswordPressed=()=>{console.warn('Forgot Password Pressed')};
   const onFacebookPressed=()=>{console.warn('Facebook Pressed')};
   const onGooglePressed=()=>{console.warn('Google Pressed')};

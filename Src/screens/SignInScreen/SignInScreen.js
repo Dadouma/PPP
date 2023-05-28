@@ -4,17 +4,22 @@ import Logo from '../../../assets/images/BMW.png'
 import CustomInput from '../../components/CustiomInput/CustomInput'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import { useNavigation } from '@react-navigation/native';
-import Home from '../Home/Home';
 
 const SignInScreen = () => {
   const Navigation=useNavigation();
-  const onSignInPressed=()=>{console.warn('Sign In Pressed')
-  Navigation.navigate('Home')};
-  const onForgotPasswordPressed=()=>{console.warn('Forgot Password Pressed')};
+  const onSignInPressed=()=>{
+    console.warn('Sign In Pressed');
+    Navigation.navigate('HomeScreen')};
+  const onForgotPasswordPressed=()=>{
+    console.warn('Forgot Password Pressed');
+    Navigation.navigate('ResetPassword')
+  };
   const onFacebookPressed=()=>{console.warn('Facebook Pressed')};
   const onGooglePressed=()=>{console.warn('Google Pressed')};
   const onApplePressed=()=>{console.warn('Apple Pressed')};
-  const onCreateAccountPressed=()=>{console.warn('Create Account Pressed')};
+  const onCreateAccountPressed=()=>{
+    console.warn('Create Account Pressed')
+    Navigation.navigate('SignUp')};
   const [username,setUsername]=useState('');
   const [password,setPassword]=useState('');
   const {height}=useWindowDimensions();
