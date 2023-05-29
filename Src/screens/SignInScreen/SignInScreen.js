@@ -8,8 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 const SignInScreen = () => {
   const Navigation=useNavigation();
   const onSignInPressed=()=>{
-    console.warn('Sign In Pressed');
-    Navigation.navigate('HomeScreen')};
+    Navigation.navigate('ChooseScreen')};
   const onForgotPasswordPressed=()=>{
     console.warn('Forgot Password Pressed');
     Navigation.navigate('ResetPassword')

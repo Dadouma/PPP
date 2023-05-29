@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const Canvas = () => {
+const ResultNumber = () => {
   return (
     <View>
-      <Text>Canvas</Text>
+      <Text>ResultNumber</Text>
     </View>
   )
 }
 
-export default Canvas
+export default ResultNumber

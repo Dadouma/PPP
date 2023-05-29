@@ -8,7 +8,13 @@ import SignUpScreen from '../screens/SignUpScreen/SignUpScreen';
 import ConfirmationEmailScreen from '../screens/ConfirmationEmailScreen/ConfirmationEmailScreen';
 import ResetPasswordScreen from '../screens/ResetPasswordScreen/ResetPasswordScreen';
 import NewPasswordScreen from '../screens/NewPasswordScreen/NewPasswordScreen';
-import HomeScreen from '../screens/Home/HomeScreen';
+import CanvasScreen from '../screens/CanvasScreen/CanvasScreen'
+import DrawingNumber from '../screens/DrawingNumber/DrawingNumber'
+import DrawingLetter from '../screens/DrawingLetter/DrawingLetter'
+import ChooseScreen from '../screens/ChooseScreen/ChooseScreen'
+import ResultLetter from '../screens/ResultScreenLetter/ResultLetter'
+import ResultNumber from '../screens/ResultScreenNumber/ResultNumber'
+
 const Navigation = () => {
   const Stack = createNativeStackNavigator();
   return (
@@ -19,7 +25,11 @@ const Navigation = () => {
         <Stack.Screen name="ConfirmationEmail" component={ConfirmationEmailScreen} />
         <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} />
         <Stack.Screen name="NewPassword" component={NewPasswordScreen} />
-        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="ChooseScreen" component={ChooseScreen} />
+        <Stack.Screen name="DrawingNumber" component={DrawingNumber} />
+        <Stack.Screen name="DrawingLetter" component={DrawingLetter} />
+        <Stack.Screen name="ResultLetter" component={ResultLetter} />
+        <Stack.Screen name="ResultNumber" component={ResultNumber} />
       </Stack.Navigator>
     </NavigationContainer>
   )

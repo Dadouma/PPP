@@ -2,7 +2,7 @@ import { View, Text, Button } from 'react-native'
 import React, {useState} from 'react'
 import DocumentPicker from 'react-native-document-picker';
 import CustomButton from '../../components/CustomButton/CustomButton'
-const  HomeScreen = () => {
+const  SelectDocumentScreen = () => {
   const[ImgUrl, setImgUrl] = useState("");
  
   const selectDoc = async () => {
