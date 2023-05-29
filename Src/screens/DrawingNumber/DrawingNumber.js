@@ -86,7 +86,7 @@ export default function App() {
               d={currentPath.join('')}
               stroke={'black'}
               fill={'transparent'}
-              strokeWidth={10}
+              strokeWidth={8}
             />
 
             {paths.length > 0 &&
@@ -95,7 +95,7 @@ export default function App() {
                   key={`path-${index}`}
                   d={item.join('')}
                   stroke={'black'}
-                  strokeWidth={10}
+                  strokeWidth={8}
                   fill={'transparent'}
                 />
               ))}

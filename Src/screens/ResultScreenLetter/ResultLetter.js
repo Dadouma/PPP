@@ -1,12 +1,28 @@
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet, Image} from 'react-native'
 import React from 'react'
 
-const ResultLetter = () => {
+const ResultLetter = ({route}) => {
+    
   return (
-    <View>
-      <Text>ResultLetter</Text>
+    <View style={styles.container}>
+      <Text style={styles.text}>Result Letter</Text>
+      <Text>{route.params.paramKey}</Text>
+      <View>
+      <Image source={{uri: route.params.paramKey}} style={{width: 200, height: 200}} />
+    </View>
     </View>
   )
 }
+const styles= StyleSheet.create({
+    container:{
+        alignItems:'center',
+        padding:40,
+    },
+    text:{
+        fontSize:20,
+        fontWeight:'bold',
+        marginBottom:20,
+    },
+})
 
 export default ResultLetter

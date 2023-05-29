@@ -14,6 +14,9 @@ const ChooseScreen = () => {
         <View style={styles.home2}>
         <CustomButton text="Number Recognition" onPress={() => navigation.navigate('DrawingScreen')} type="PRIMARY"/>
         </View>
+        <View style={styles.home2}>
+        <CustomButton text="Select Image" onPress={() => navigation.navigate('SelectDocumentScreen')} type="PRIMARY"/>
+        </View>
         </View>
         
   )

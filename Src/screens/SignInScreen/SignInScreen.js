@@ -5,9 +5,11 @@ import CustomInput from '../../components/CustiomInput/CustomInput'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import { useNavigation } from '@react-navigation/native';
 
+
 const SignInScreen = () => {
   const Navigation=useNavigation();
   const onSignInPressed=()=>{
+    //login(username:setUsername,password:setPassword);
     Navigation.navigate('ChooseScreen')};
   const onForgotPasswordPressed=()=>{
     console.warn('Forgot Password Pressed');

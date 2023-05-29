@@ -13,13 +13,14 @@ import ViewShot, { captureRef } from 'react-native-view-shot';
 import CustomButton from '../../components/CustomButton/CustomButton';
 const { height, width } = Dimensions.get('window');
 import { useNavigation } from '@react-navigation/native';
+import RNFetchBlob from 'rn-fetch-blob';
 
-export default function App() {
+let url = '';
+export default function App({ navigation }) {
   const [currentPath, setCurrentPath] = useState([]);
   const [paths, setPaths] = useState([]);
-  const [lienletter, setLienletter] = useState('');
-  const navigation = useNavigation();
 
+  const [uri, setUri] = useState('');
   // ref for snapshot
   const ref = useRef(null);
 
@@ -50,18 +51,38 @@ export default function App() {
   };
 
   const next = () => {
-    captureRef(ref, {
-      format: 'jpg',
-      quality: 0.8,
-    }).then(
-      (uri) => {
-        setLienletter(uri);
-        Alert.alert('Voici le lien', uri);
-        navigation.navigate("ResultLetter");
-      },
-      (error) => console.error('Oops, snapshot failed', error)
-    );
+    ref.current.capture().then(uri => {
+      Alert.alert('file saved', uri);
+      setUri(uri);
+      //navigation.navigate('ResultLetter', { paramKey: uri });
+    });
+    // RNFetchBlob.fetch(
+    //   "POST",
+    //   "http://localhost:3000/file",
+    //   {
+    //     Authorization: "Bearer access-token...",
+    //     "Dropbox-API-Arg": JSON.stringify({
+    //       path: "/img-from-react-native.png",
+    //       mode: "add",
+    //       autorename: true,
+    //       mute: false,
+    //     }),
+    //     "Content-Type": "application/octet-stream",
+    //     // here's the body you're going to send, should be a BASE64 encoded string
+    //     // (you can use "base64"(refer to the library 'mathiasbynens/base64') APIs to make one).
+    //     // The data will be converted to "byte array"(say, blob) before request sent.
+    //   },
+    //   base64ImageString
+    // )
+    //   .then((res) => {
+    //     console.log(res.text());
+    //   })
+    //   .catch((err) => {
+    //     // error handling ..
+    //   });
+
   };
+
   const reset = () => {
     setPaths([]);
     setCurrentPath([]);
@@ -91,7 +112,7 @@ export default function App() {
               d={currentPath.join('')}
               stroke={'black'}
               fill={'transparent'}
-              strokeWidth={10}
+              strokeWidth={8}
             />
 
             {paths.length > 0 &&
@@ -100,7 +121,7 @@ export default function App() {
                   key={`path-${index}`}
                   d={item.join('')}
                   stroke={'black'}
-                  strokeWidth={10}
+                  strokeWidth={8}
                   fill={'transparent'}
                 />
               ))}

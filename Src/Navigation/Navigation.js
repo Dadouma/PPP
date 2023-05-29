@@ -14,6 +14,7 @@ import DrawingLetter from '../screens/DrawingLetter/DrawingLetter'
 import ChooseScreen from '../screens/ChooseScreen/ChooseScreen'
 import ResultLetter from '../screens/ResultScreenLetter/ResultLetter'
 import ResultNumber from '../screens/ResultScreenNumber/ResultNumber'
+import SelectDocumentScreen from '../screens/SelectDocumentScreen/SelectDocumentScreen'
 
 const Navigation = () => {
   const Stack = createNativeStackNavigator();
@@ -30,6 +31,7 @@ const Navigation = () => {
         <Stack.Screen name="DrawingLetter" component={DrawingLetter} />
         <Stack.Screen name="ResultLetter" component={ResultLetter} />
         <Stack.Screen name="ResultNumber" component={ResultNumber} />
+        <Stack.Screen name="SelectDocumentScreen" component={SelectDocumentScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )
