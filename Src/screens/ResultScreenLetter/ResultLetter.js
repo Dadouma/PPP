@@ -8,7 +8,7 @@ const ResultLetter = ({route}) => {
       <Text style={styles.text}>Result Letter</Text>
       <Text>{route.params.paramKey}</Text>
       <View>
-      <Image source={{uri: route.params.paramKey}} style={{width: 200, height: 200}} />
+      <Image source={{uri:route.params.paramKey}} style={{width: 800, height: 300}} />
     </View>
     </View>
   )

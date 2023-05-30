@@ -7,7 +7,14 @@ const ChooseScreen = () => {
     const navigation = useNavigation();
     const {height}=useWindowDimensions();
   return (
-        <View>
+        <View style={styles.container}>
+        <Text 
+        style={{
+          color: 'black',
+          fontSize: 28,
+          textAlign: 'center',
+          marginVertical: 40,
+        }}>Choose Option</Text>
         <View style={styles.home}>
         <CustomButton text="Letter Recognition" onPress={() => navigation.navigate('DrawingLetter')} type="PRIMARY"/>
         </View>
@@ -23,11 +30,15 @@ const ChooseScreen = () => {
   
 }
 const styles= StyleSheet.create({
+    container:{
+      flex:1,
+      
+    },
     
     home:{
       alignItems:'center',
       padding:60,
-      marginTop:200,
+      
       
     },
     home2:{

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, {useRef, useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -8,15 +8,13 @@ import {
   Text,
   NativeEventEmitter,
 } from 'react-native';
-import { Path, Svg } from 'react-native-svg';
-import ViewShot, { captureRef } from 'react-native-view-shot';
+import {Path, Svg} from 'react-native-svg';
+import ViewShot, {captureRef} from 'react-native-view-shot';
 import CustomButton from '../../components/CustomButton/CustomButton';
-const { height, width } = Dimensions.get('window');
-import { useNavigation } from '@react-navigation/native';
-import RNFetchBlob from 'rn-fetch-blob';
+const {height, width} = Dimensions.get('window');
+import {useNavigation} from '@react-navigation/native';
 
-let url = '';
-export default function App({ navigation }) {
+export default function App({navigation}) {
   const [currentPath, setCurrentPath] = useState([]);
   const [paths, setPaths] = useState([]);
 
@@ -24,7 +22,7 @@ export default function App({ navigation }) {
   // ref for snapshot
   const ref = useRef(null);
 
-  const onTouchMove = (event) => {
+  const onTouchMove = event => {
     const newPath = [...currentPath];
 
     // get current user touches position
@@ -32,8 +30,9 @@ export default function App({ navigation }) {
     const locationY = event.nativeEvent.locationY;
 
     // create new point
-    const newPoint = `${newPath.length === 0 ? 'M' : ''
-      }${locationX.toFixed(0)},${locationY.toFixed(0)} `;
+    const newPoint = `${newPath.length === 0 ? 'M' : ''}${locationX.toFixed(
+      0,
+    )},${locationY.toFixed(0)} `;
 
     // add the point to older points
     newPath.push(newPoint);
@@ -49,64 +48,40 @@ export default function App({ navigation }) {
     setPaths(currentPaths);
     setCurrentPath([]);
   };
-
-  const next = () => {
+  const [url, setUrl] = useState('');
+  const confirm = async () => {
     ref.current.capture().then(uri => {
       Alert.alert('file saved', uri);
       setUri(uri);
-      //navigation.navigate('ResultLetter', { paramKey: uri });
+      setUrl(uri);
     });
-    // RNFetchBlob.fetch(
-    //   "POST",
-    //   "http://localhost:3000/file",
-    //   {
-    //     Authorization: "Bearer access-token...",
-    //     "Dropbox-API-Arg": JSON.stringify({
-    //       path: "/img-from-react-native.png",
-    //       mode: "add",
-    //       autorename: true,
-    //       mute: false,
-    //     }),
-    //     "Content-Type": "application/octet-stream",
-    //     // here's the body you're going to send, should be a BASE64 encoded string
-    //     // (you can use "base64"(refer to the library 'mathiasbynens/base64') APIs to make one).
-    //     // The data will be converted to "byte array"(say, blob) before request sent.
-    //   },
-    //   base64ImageString
-    // )
-    //   .then((res) => {
-    //     console.log(res.text());
-    //   })
-    //   .catch((err) => {
-    //     // error handling ..
-    //   });
-
+  };
+  const next = () => {
+    console.log('uri', uri);
+    console.log('url', url);
+    navigation.navigate('ResultLetter', {paramKey: url});
   };
 
   const reset = () => {
     setPaths([]);
     setCurrentPath([]);
-
-  }
-
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 20 }}>
+      <Text style={{fontSize: 20, fontWeight: 'bold', marginBottom: 20}}>
         Draw the letter
       </Text>
       <View
         style={styles.svgContainer}
         onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
-      >
+        onTouchEnd={onTouchEnd}>
         <ViewShot
           ref={ref}
           options={{
             format: 'jpg',
             quality: 1,
-          }}
-        >
+          }}>
           <Svg height={height * 0.7} width={width}>
             <Path
               d={currentPath.join('')}
@@ -128,9 +103,9 @@ export default function App({ navigation }) {
           </Svg>
         </ViewShot>
       </View>
-      <CustomButton text="Next" onPress={next} type="PRIMARY" />
+      <CustomButton text="Confirm" onPress={confirm} type="PRIMARY" />
+      <CustomButton text="next" onPress={next} type="PRIMARY" />
       <CustomButton text="Reset" onPress={reset} type="SECONDARY" />
-
     </View>
   );
 }
@@ -143,11 +118,10 @@ const styles = StyleSheet.create({
     padding: 60,
   },
   svgContainer: {
-    height: height * 0.7,
+    height: height * 0.6,
     width: width * 0.99,
     borderColor: '#3B71F3',
     backgroundColor: 'white',
     borderWidth: 1,
   },
-},
-);
+});
