@@ -1,4 +1,4 @@
-#React native
+# React native
 
 * Developed a comprehensive OCR mobile application utilizing React Native, Flask, and NestJS, providing users with
 seamless text recognition capabilities on-the-go.
